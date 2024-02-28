@@ -1,0 +1,6 @@
+{
+  "output": "generated/eip721.",
+  "chain": "blast-mainnet",
+  "datasources": [{ "startBlock": 0, "module": "erc721" }],
+  "deploy": [{ "type": "studio", "name": "blast-erc721" }]
+}
