@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: erc721
-    network: blast-mainnet
+    network: blast-mainnet # <-- Interesting part
     source:
       abi: IERC721
       startBlock: 0
