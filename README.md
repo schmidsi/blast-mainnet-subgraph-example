@@ -4,11 +4,62 @@ This is an example subgraph for Blast Mainnet. It's simply the ERC721 subgraph f
 
 Important piece is the `network` in [subgraph.yaml#7](./subgraph.yaml#7): It's set to: `blast-mainnet`. Otherwise, the subgraph is normal. See the official [Quick Start on thegraph.com](https://thegraph.com/docs/en/quick-start/).
 
-Check out the [Preview GraphQL Playground](https://api.studio.thegraph.com/query/64409/blast-erc721/version/latest). A more sophisticated subgraph was published to
+It is published to The Graph Network. [Check it out](https://thegraph.com/explorer/subgraphs/HicrZaHRDR5GMRZJVCLQsR522wkAbYmejtu5vaUhTLfK?view=Overview&chain=arbitrum-one).
 
-## Deploy a Blast testnet subgraph on Blast Mainnet
+## Create a new subgraph indexing Blast Mainnet
 
-If there is no Blast testnet subgraph yet, [Quick Start on thegraph.com](https://thegraph.com/docs/en/quick-start/) to create a subgraph for Blast testnet.
+_TLDR_:
+
+- Install the latest Graph CLI: `npm install -g @graphprotocol/graph-cli@0.68.5`
+- Run `graph init` and follow along:
+
+```bash
+graph init
+✔ Protocol · ethereum
+✔ Product for which to initialize · subgraph-studio
+✔ Subgraph slug · blast-subgraph
+✔ Directory to create the subgraph in · blast-subgraph
+✔ Ethereum network · blast-mainnet
+✔ Contract address · 0xdeadbeef <- Paste your contract address here
+✔ Fetching ABI from Etherscan
+✔ Fetching Start Block
+✔ Start Block · 198546
+✔ Contract Name · Contract
+✔ Index contract events as entities (Y/n) · true
+  Generate subgraph
+  Write subgraph to directory
+✔ Create subgraph scaffold
+✔ Initialize networks config
+✔ Initialize subgraph repository
+✔ Install dependencies with yarn
+✔ Generate ABI and schema types with yarn codegen
+Add another contract? (y/n):
+Subgraph blast-subgraph created in blast-subgraph
+
+Next steps:
+
+  1. Run `graph auth` to authenticate with your deploy key.
+
+  2. Type `cd blast-subgraph` to enter the subgraph.
+
+  3. Run `yarn deploy` to deploy the subgraph.
+
+Make sure to visit the documentation on https://thegraph.com/docs/ for further information.
+```
+
+- Run `cd blast-subgraph`
+- Run `graph codegen && graph build` to verify that the subgraph builds properly
+- Go to [thegraph.com/studio](https://thegraph.com/studio) and log in
+- Create a new subgraph
+- In the right column, scroll down to "Auth & deploy"
+- Copy/paste the `graph auth ...`, command to the terminal
+- Run `graph deploy --studio blast-subgraph` (assuming the subgraphs name was "Blast Subgraph") to deploy to the Subgraph Studio
+- This gives you a development query URL to test everything and iterate
+
+For a full tutorial go to [Quick Start on thegraph.com](https://thegraph.com/docs/en/quick-start/).
+
+## Switch a Blast testnet subgraph to Blast Mainnet
+
 Assuming there is already a subgraph that indexes Blast testnet, these are the steps to switch it to Blast Mainnet:
 
 - Change the `network` in `subgraph.yaml` to `blast-mainnet`
